@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Navigation timing API example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      /* VERY basic styling for the performance table */
+      #performance_div {
+        width: 300px;
+        border:1px solid #bbb;
+        padding:10px;
+        margin-top: 10px;
+        visibility: hidden;
+      }
+      th { text-align:left;}
+
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Performance API's example</h1>
+    <div id="feature_support_div"></div>
+    <div id="performance_div"></div>
+    <div id="learn_more">
+      <h2>Learn more</h2>
+       <p>This is a very basic example of how to collect performance data on page load times. Read the full article on how to <a xhref="http://blog.trasatti.it/2012/11/measuring-site-performance-with-javascript-on-mobile.html">measure performance with JavaScript on mobile</a><br>
+In my article you will also find references to other useful resources about performance measurement for the Web.</p>
+    </div>
+	<div id="images">The Navigation Timing API shows the time to load the entire page including resources, so I added this image as an example. You can ignore it.<br><br>
+<img id="image0" src="http://src.sencha.io/http://farm8.staticflickr.com/7235/7401476288_c61552b383_z.jpg"><br>
+    </div>
+    <div id="text_div"><!-- p>I should write a bunch of things here. Possibly remove some or all of the Lorem ipsum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus justo, pretium quis volutpat at, volutpat et lorem. Pellentesque eget nulla velit. Fusce volutpat ante non leo sagittis in lobortis tortor scelerisque. Nunc in metus velit. Maecenas et eros id tellus elementum gravida id sed sapien. Etiam vehicula, nisi eu facilisis cursus, lacus nisi convallis quam, et imperdiet mauris ante nec felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam pellentesque orci quis sapien pellentesque accumsan. Pellentesque tristique convallis turpis, sed hendrerit diam faucibus non.</p>
+    
+      <p>Morbi rhoncus, quam sit amet facilisis congue, eros nunc ullamcorper lacus, vel auctor ante augue vitae enim. Nullam ac ante ac lorem luctus sagittis. Aliquam non felis eget tellus vehicula vulputate a sit amet arcu. Etiam lacinia nisi in arcu ultrices adipiscing. Aliquam sit amet justo non risus facilisis iaculis sed a ligula. Vestibulum pretium est quis mauris vehicula porta tempus purus scelerisque. Cras eleifend adipiscing turpis, sollicitudin accumsan tortor ultrices at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <p>Pellentesque non dolor lectus. In in tellus est. Nam rutrum, nunc nec blandit congue, felis mi aliquet turpis, eget bibendum velit neque non est. Nulla vitae urna ut ante tempor pharetra eu eget lectus. Mauris sit amet vulputate enim. Mauris laoreet libero at metus ullamcorper egestas. Cras imperdiet turpis molestie sapien posuere iaculis a nec mi. Sed convallis aliquet purus id dictum. Vestibulum tristique iaculis dui sit amet tincidunt. Quisque nisi libero, euismod vel semper sed, bibendum sed neque. Nulla id elit ac odio varius bibendum porta vel mauris. Curabitur mattis ornare varius. Donec vitae odio libero. Etiam vestibulum auctor elementum.</p>
+
+      <p>Maecenas aliquam, leo eget suscipit sagittis, mauris justo venenatis elit, vitae eleifend lacus libero pretium lorem. Nullam sem lacus, ultricies suscipit facilisis eget, tempus vitae velit. Nam sodales risus at urna commodo consectetur nec quis massa. Morbi nulla erat, porta sit amet pulvinar eu, pellentesque quis lacus. Curabitur id auctor orci. Donec id rutrum tellus. Donec feugiat odio eu ligula facilisis id ultrices turpis sodales. Mauris quis volutpat tellus. Curabitur malesuada euismod pharetra. Aenean ut venenatis neque.</p>
+
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam posuere ullamcorper mollis. Duis congue rutrum enim. Pellentesque cursus interdum enim et convallis. Sed augue lorem, tempor et tincidunt sed, dictum ut tortor. Donec semper nisl eget odio rhoncus eu vestibulum quam vulputate. Suspendisse potenti. Aenean nec lacus eros, ac molestie mauris. Vestibulum ac leo mauris. Integer dignissim magna at felis congue porttitor.</p -->
+    </div>
+  </body>
+  <script>
+    function prefixedPerfSupport() {
+      if (!!window.msPerformance) {
+        return "ms";
+      } else if (!!window.webkitPerformance) {
+        return "webKit";
+      } else {
+        // Chrome and IE are the only browsers that ever implemented this API with a
+        //   prefix, so no need to test for other prefixes. Source: http://caniuse.com/nav-timing
+        return false;
+      }
+    };
+    var featureDetect = {};
+    var textFiller;
+    featureDetect.supported = (window.msPerformance || window.webkitPerformance || window.performance) ? true : false;
+    featureDetect.prefixed = prefixedPerfSupport();
+    featureDetect.unprefixed = (self.performance) ? true : false;
+
+    // print what the browser supports
+    if (featureDetect.supported) {
+      textFiller = "Your browser supports the Navigation timing API.<br>";
+      if (featureDetect.prefixed !== false && featureDetect.unprefixed) {
+	    textFiller = textFiller + "You may use window." + featureDetect.prefixed + "Performance, but you should REALLY use window.performance. No, really.<br>";
+	  } else if (featureDetect.prefixed !== false) {
+	    textFiller = textFiller +  "Use window." + featureDetect.prefixed + "Performance";
+	  } else if (featureDetect.unprefixed) {
+	    textFiller = textFiller +  "YAY! Use window.performance with confidence.<br><button id=\"myButton\" name=\"Load\" onclick=\"printIt()\">Show performance data</button>";
+	  }
+	  document.getElementById('feature_support_div').innerHTML = "<span id ='details_on_features'>" + textFiller + "</span>";
+    } else {
+      document.getElementById('feature_support_div').innerHTML = "Oh rats! Your browser does not support the Navigation timing API :( <br>Did you try with a Windows Phone 7.5 or 8?";
+    }
+
+    function printIt() {
+      // show page load performance - show a few important bits, not everything
+      var performanceHTML = "";
+      if (featureDetect.supported) {
+        if (featureDetect.unprefixed) {
+          var t = window.performance.timing;
+        } else if (featureDetect.prefixed == "ms") {
+          var t = window.msPerformance.timing;
+        } else if (featureDetect.prefixed == "webkit") {
+          var t = window.webkitPerformance.timing;
+        } else {
+          alert("Unexpected error while fetching navigation timing data.");
+          return;
+        }
+        
+        var start = t.navigationStart;
+        var sortable = [];
+        var maxTime = 0;
+        var order = ['navigationStart', 'redirectStart', 'redirectEnd', 
+          'fetchStart', 'domainLookupStart', 'domainLookupEnd', 'connectStart', 
+          'secureConnectionStart', 'connectEnd', 'requestStart', 'responseStart', 
+          'responseEnd', 'unloadEventStart', 'unloadEventEnd', 'domLoading', 'domInteractive', 
+          'msFirstPaint', 'domContentLoadedEventStart', 'domContentLoadedEventEnd', 
+          'domContentLoaded', 'domComplete', 'loadEventStart', 'loadEventEnd'];        
+          
+        var perfEvents = Object.keys(t).length ? Object.keys(t) : Object.keys(Object.getPrototypeOf(t));
+        perfEvents.forEach(function(e) {
+          if (t[e] && t[e] > 0) {
+            duration = t[e] - start;
+            sortable.push([e, duration]);
+            if (duration > maxTime) {
+              maxTime = duration;
+            }
+          }
+        });
+        sortable.sort(function(a, b) {
+          return a[1] !== b[1] ? a[1] - b[1] : order.indexOf(a[0]) - order.indexOf(b[0]);
+        });
+
+        // If you wanted to log the data to the console, sortable is what you want
+        // console.log(sortable.toString());
+
+        // wrapping in a table simply for layout reasons
+        performanceHTML = "<table><thead><tr><th scope=\"col\" id=\"xyz\">Property</th><th scope=\"col\" id=\"xyz\">Value</th></tr>";
+        sortable.forEach(function(s) {
+          performanceHTML = performanceHTML + "<tr><td>" + s[0] + "</td><td>" + s[1] + "ms</td>";
+        });
+        performanceHTML = performanceHTML + "</table>";
+        
+      }
+      document.getElementById('performance_div').innerHTML = performanceHTML;
+      document.getElementById('performance_div').style.visibility = 'visible';
+      // Portions of JS from http://ie.microsoft.com/testdrive/Performance/msPerformance/Default.html?loaded=0 and from https://github.com/kaaes/timing
+    }
+  </script>
+</html>

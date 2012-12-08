@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Resource Timing example</title>
+    <link rel='stylesheet' href='./res/style.css' type='text/css' media='screen' />
+    <script type='text/javascript' src='./res/script.js'></script>
+  </head>
+  <body onload="featureDetect()">
+    <div id="intro"><h1>Showing some Web Perf API's</h1>
+This is a simple example of an HTML page that loads an external stylesheet, a JavaScript and an image. Additionally the user may click on the "Load another image" button to fire a JavaScript function that will add a new image to the DOM.<br><br>
+
+The embedded JavaScript will automatically check for support of the Resource Timing and Performance Timeline specs, if supported 2 buttons will activate. Clicking on either will show the data available to developers using those new API's.<br><br>
+
+Clicking on "Load another image" will add a new image to the DOM, at that point it is possible to display timing data again. This demonstrates how the browser keeps measuring time and how in different moments in time the data available can grow. Developers might for example measure the timing of XHR requests.
+</div>
+    <div id="perf_support"><h2>Browser support</h2></div>
+    <div id="buttons">
+      <button id="myButton" name="Load" onclick="loadResources()">Load another image</button><br><br>
+      <button id="myButton2" name="display" onclick="displayPerfData()" disabled="true">Display basic performance data</button>
+    </div>
+    <div id="perf_data"></div>
+    <div id="buttons2">
+      <button id="myButton3" name="display" onclick="displayDetailedPerfData()" disabled="true">Display detailed performance data</button>
+    </div>
+    <div id="detailed_perf_data"></div>
+    <div id="text_blurb"><h2>Random text to use up space.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus justo, pretium quis volutpat at, volutpat et lorem. Pellentesque eget nulla velit. Fusce volutpat ante non leo sagittis in lobortis tortor scelerisque. Nunc in metus velit. Maecenas et eros id tellus elementum gravida id sed sapien. Etiam vehicula, nisi eu facilisis cursus, lacus nisi convallis quam, et imperdiet mauris ante nec felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam pellentesque orci quis sapien pellentesque accumsan. Pellentesque tristique convallis turpis, sed hendrerit diam faucibus non.</p>
+    
+      <p>Morbi rhoncus, quam sit amet facilisis congue, eros nunc ullamcorper lacus, vel auctor ante augue vitae enim. Nullam ac ante ac lorem luctus sagittis. Aliquam non felis eget tellus vehicula vulputate a sit amet arcu. Etiam lacinia nisi in arcu ultrices adipiscing. Aliquam sit amet justo non risus facilisis iaculis sed a ligula. Vestibulum pretium est quis mauris vehicula porta tempus purus scelerisque. Cras eleifend adipiscing turpis, sollicitudin accumsan tortor ultrices at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <p>Pellentesque non dolor lectus. In in tellus est. Nam rutrum, nunc nec blandit congue, felis mi aliquet turpis, eget bibendum velit neque non est. Nulla vitae urna ut ante tempor pharetra eu eget lectus. Mauris sit amet vulputate enim. Mauris laoreet libero at metus ullamcorper egestas. Cras imperdiet turpis molestie sapien posuere iaculis a nec mi. Sed convallis aliquet purus id dictum. Vestibulum tristique iaculis dui sit amet tincidunt. Quisque nisi libero, euismod vel semper sed, bibendum sed neque. Nulla id elit ac odio varius bibendum porta vel mauris. Curabitur mattis ornare varius. Donec vitae odio libero. Etiam vestibulum auctor elementum.</p>
+
+      <p>Maecenas aliquam, leo eget suscipit sagittis, mauris justo venenatis elit, vitae eleifend lacus libero pretium lorem. Nullam sem lacus, ultricies suscipit facilisis eget, tempus vitae velit. Nam sodales risus at urna commodo consectetur nec quis massa. Morbi nulla erat, porta sit amet pulvinar eu, pellentesque quis lacus. Curabitur id auctor orci. Donec id rutrum tellus. Donec feugiat odio eu ligula facilisis id ultrices turpis sodales. Mauris quis volutpat tellus. Curabitur malesuada euismod pharetra. Aenean ut venenatis neque.</p>
+
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam posuere ullamcorper mollis. Duis congue rutrum enim. Pellentesque cursus interdum enim et convallis. Sed augue lorem, tempor et tincidunt sed, dictum ut tortor. Donec semper nisl eget odio rhoncus eu vestibulum quam vulputate. Suspendisse potenti. Aenean nec lacus eros, ac molestie mauris. Vestibulum ac leo mauris. Integer dignissim magna at felis congue porttitor.</p>
+    </div>
+    <div id="images">
+        <img id="image0" src="http://src.sencha.io/http://logme.mobi/jsnt/res/image1.jpg"><br>
+    </div>
+  </body>
+</html>

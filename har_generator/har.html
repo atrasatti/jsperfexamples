@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title>HAR generation example</title>
+    <link rel='stylesheet' href='./res/style.css' type='text/css' media='screen' />
+  </head>
+  <body>
+    <div id="intro"><h1>Showing some Web perf API's</h1>
+If you are using IE10 or another browser that supports the Resource Timing and Performance Timeline API's, click on "Generate HAR" and then the link below. If you are on any other browser all you can do is click on the third link.
+
+<br><br>
+
+</div>
+    <div id="perf_support"></div>
+    <div id="links">
+      <a href="#" onclick="javascript:generateHAR()">Generate HAR</a><br><br>
+      <a href="#" id="dVHAR">See the dynamically generated HAR on HAR viewer</a><br><br>
+      <a href="http://www.softwareishard.com/har/viewer/?inputUrl=http://logme.mobi/jsnt/harp/store/0c8f0f589bf0c8e289737d936627e7f9">See a HAR file generated from a previous session with a Lumia 920 running IE10 Mobile on HAR viewer</a> (better viewed on a regular computer)<br><br>
+    </div>
+    <div id="perf_data"></div>
+    <div id="detailed_perf_data"></div>
+    <div id="social"><h2>A couple of buttons for social networks</h2>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="andreatrasatti" data-dnt="true">Tweet</a></div>
+    <div class="fb-like" data-href="http://logme.mobi/jsnt/har.html" data-send="true" data-width="450" data-show-faces="true" data-action="recommend"></div>
+    <div id="text_blurb"><h2>This is random text to use up space.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus justo, pretium quis volutpat at, volutpat et lorem. Pellentesque eget nulla velit. Fusce volutpat ante non leo sagittis in lobortis tortor scelerisque. Nunc in metus velit. Maecenas et eros id tellus elementum gravida id sed sapien. Etiam vehicula, nisi eu facilisis cursus, lacus nisi convallis quam, et imperdiet mauris ante nec felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam pellentesque orci quis sapien pellentesque accumsan. Pellentesque tristique convallis turpis, sed hendrerit diam faucibus non.</p>
+    
+      <p>Morbi rhoncus, quam sit amet facilisis congue, eros nunc ullamcorper lacus, vel auctor ante augue vitae enim. Nullam ac ante ac lorem luctus sagittis. Aliquam non felis eget tellus vehicula vulputate a sit amet arcu. Etiam lacinia nisi in arcu ultrices adipiscing. Aliquam sit amet justo non risus facilisis iaculis sed a ligula. Vestibulum pretium est quis mauris vehicula porta tempus purus scelerisque. Cras eleifend adipiscing turpis, sollicitudin accumsan tortor ultrices at. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <p>Pellentesque non dolor lectus. In in tellus est. Nam rutrum, nunc nec blandit congue, felis mi aliquet turpis, eget bibendum velit neque non est. Nulla vitae urna ut ante tempor pharetra eu eget lectus. Mauris sit amet vulputate enim. Mauris laoreet libero at metus ullamcorper egestas. Cras imperdiet turpis molestie sapien posuere iaculis a nec mi. Sed convallis aliquet purus id dictum. Vestibulum tristique iaculis dui sit amet tincidunt. Quisque nisi libero, euismod vel semper sed, bibendum sed neque. Nulla id elit ac odio varius bibendum porta vel mauris. Curabitur mattis ornare varius. Donec vitae odio libero. Etiam vestibulum auctor elementum.</p>
+
+      <p>Maecenas aliquam, leo eget suscipit sagittis, mauris justo venenatis elit, vitae eleifend lacus libero pretium lorem. Nullam sem lacus, ultricies suscipit facilisis eget, tempus vitae velit. Nam sodales risus at urna commodo consectetur nec quis massa. Morbi nulla erat, porta sit amet pulvinar eu, pellentesque quis lacus. Curabitur id auctor orci. Donec id rutrum tellus. Donec feugiat odio eu ligula facilisis id ultrices turpis sodales. Mauris quis volutpat tellus. Curabitur malesuada euismod pharetra. Aenean ut venenatis neque.</p>
+
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam posuere ullamcorper mollis. Duis congue rutrum enim. Pellentesque cursus interdum enim et convallis. Sed augue lorem, tempor et tincidunt sed, dictum ut tortor. Donec semper nisl eget odio rhoncus eu vestibulum quam vulputate. Suspendisse potenti. Aenean nec lacus eros, ac molestie mauris. Vestibulum ac leo mauris. Integer dignissim magna at felis congue porttitor.</p>
+    </div>
+    <div id="images">
+      <img id="image0" src="http://src.sencha.io/http://logme.mobi/jsnt/res/image1.jpg"><br>
+    </div>
+    <script type='text/javascript' src='./res/browserdetect.js'></script>
+    <script type='text/javascript' src='./res/har.js'></script>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9942867462396965";
+/* Resource Timing API - mobile */
+google_ad_slot = "6926794463";
+google_ad_width = 320;
+google_ad_height = 50;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  </body>
+</html>

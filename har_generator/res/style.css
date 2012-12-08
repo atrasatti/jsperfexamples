@@ -1,0 +1,9 @@
+#perf_data #detailed_perf_data {
+  xwidth: 300px;
+  border:1px solid #bbb;
+  padding:10px;
+  margin-top: 10px;
+  visibility: hidden;
+}
+
+th { text-align:left;}
